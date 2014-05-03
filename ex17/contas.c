@@ -134,8 +134,8 @@ void Conta_print(struct Contas *conta) {
 
 	printf("nome:	 %s\n",conta->nome);
 	printf("discri:  %s\n",conta->desc);
-	printf("valor:	 %d\n",conta->valor);
 	printf("tipo:    %c\n",conta->tipo);
+	printf("valor:	 %d\n",conta->valor);
 	printf("\n");
 }
 
@@ -183,9 +183,10 @@ int main(int argc,char **argv) {
 			Database_list(conn);	
 			break;
 
-		case 's': 
-             //if(argc != 8) die("Need id, name, descricao, tipo, valor");
-             Database_set(conn, id, argv[4], argv[5],*argv[6],*argv[7]);
+		case 's':       
+             
+             if(argc != 8) die("Need id, name, descricao, tipo, valor");
+             Database_set(conn, id, argv[4], argv[5],argv[6][0],atoi(argv[7]));
              Database_write(conn);	
              break;
 
